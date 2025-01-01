@@ -1,4 +1,4 @@
-const userModal = require("../modals/user.modal");
+const userModal = require("../modals/user.model");
 
 module.exports.createUser = async ({
     firstName, lastName, email, password
