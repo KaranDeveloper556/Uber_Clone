@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const captainSchema = mongoose.Schema({
+const captainSchema =new mongoose.Schema({
     fullName: {
         firstName: {
             type: String,
@@ -54,31 +54,32 @@ const captainSchema = mongoose.Schema({
         vehicleType: {
             type: String,
             required: true,
-            enum: ['car', 'Bike', 'auto', 'Van', 'bus'],
+            enum: ['car', 'bike', 'auto', 'Van', 'bus'],
         }
     },
     location: {
         lat: {
             type: Number,
-            required: true
         },
         lon: {
             type: Number,
-            required: true
         }
     }
 })
 
 captainSchema.methods.generateAuthToken = () => {
     const token = jwt.sign({ _id: this._is }, process.env.JWT_SECRET, { expiresIn: '24h' })
+    return token
 }
 
 captainSchema.methods.comparePassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 }
 
-captainSchema.static.hashingPassword = async function (password) {
+captainSchema.methods.hashingPassword = async function (password) {
     return await bcrypt.hash(password, 10)
 }
 
 const captainModel = mongoose.model('captain', captainSchema)
+
+module.exports = captainModel;
