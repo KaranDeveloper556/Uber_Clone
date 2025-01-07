@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { UserDataContext } from '../../../contex/UserContext'
 
 const UserSignUp = () => {
 
@@ -7,29 +9,35 @@ const UserSignUp = () => {
   const [LastName, setLastName] = useState('')
   const [Email, setEmail] = useState('')
   const [Password, setPassword] = useState('')
-  const [UserData, setUserData] = useState({})
 
-  const SubmitHandle = (e) => {
+  const navigate = useNavigate()
+
+  const { Data, setData } = useContext(UserDataContext)
+
+  const SubmitHandle =async (e) => {
     e.preventDefault()
+
     const UpdatedUserData = {
       fullName: {
         firstName: FirstName,
-        lirstName: LastName,
+        lastName: LastName,
       },
       email: Email,
       password: Password
     }
-    setUserData(UpdatedUserData)
+
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/user/register`, UpdatedUserData)
+    if (response.status === 201) {
+      const data = response.data
+      setData(data.Data)
+      navigate('/home')
+    }
+
     setPassword("")
     setEmail("")
     setFirstName("")
     setLastName("")
   }
-
-  useEffect(() => {
-    console.log(UserData)
-  }, [UserData])
-
 
   return (
     <section className="user-login w-full relative min-h-screen min-w-dvh">
