@@ -1,26 +1,34 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { useState, useEffect, useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { UserDataContext } from '../../../contex/UserContext'
 
 const UserLogin = () => {
 
   const [Email, setEmail] = useState('')
   const [Password, setPassword] = useState('')
-  const [UserData, setUserData] = useState({})
+  const { Data, setData } = useContext(UserDataContext)
+  const navigate = useNavigate()
 
-  const SubmitHandle = (e) => {
+
+  const SubmitHandle = async (e) => {
     e.preventDefault()
+
     const UpdatedUserData = {
       email: Email,
       password: Password
     }
-    setUserData(UpdatedUserData)
+
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/user/login`, UpdatedUserData)
+    if (response.status === 200 || response.status === 201) {
+      const data = response.data
+      setData(data.user)
+      navigate('/home')
+    }
+
     setPassword("")
     setEmail("")
   }
-
-  useEffect(() => {
-    console.log(UserData)
-  }, [UserData])
 
   return (
     <section className="user-login relative min-h-screen min-w-dvh">

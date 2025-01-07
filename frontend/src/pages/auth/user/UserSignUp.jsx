@@ -29,7 +29,7 @@ const UserSignUp = () => {
     const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/user/register`, UpdatedUserData)
     if (response.status === 201) {
       const data = response.data
-      setData(data.Data)
+      setData(data.user)
       navigate('/home')
     }
 
