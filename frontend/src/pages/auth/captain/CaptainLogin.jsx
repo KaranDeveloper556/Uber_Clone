@@ -29,7 +29,7 @@ const CaptainLogin = () => {
             </div>
             <form onSubmit={(e) => SubmitHandle(e)} className="p-4 pb-2 relative mt-8 mx-auto">
                 <div className="mb-2">
-                    <label htmlFor="email-input" className="block mb-2 text-lg font-medium text-black">Email</label>
+                    <label htmlFor="email-input" className="block mb-2 text-lg font-medium text-black">Captain's Email</label>
                     <input
                         type="email"
                         className="block w-full p-2 border border-gray-300 rounded-lg bg-gray-200 text-sm focus:ring-blue-500"
@@ -41,7 +41,7 @@ const CaptainLogin = () => {
                     />
                 </div>
                 <div className="mb-5">
-                    <label htmlFor="base-input" className="block mb-2 text-lg font-medium text-black">Password</label>
+                    <label htmlFor="base-input" className="block mb-2 text-lg font-medium text-black">Captain's Password</label>
                     <input
                         type="password"
                         className="bg-gray-200 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 block w-full p-2"

@@ -38,7 +38,7 @@ const CaptainSignUp = () => {
       <form onSubmit={(e) => SubmitHandle(e)} className="relative w-full p-4 pb-2 mt-8 mx-auto">
         <div className="mb-2 relative w-full flex justify-center items-center flex-col">
           <div className="firstname-input relative w-full mb-2" id="firstName">
-            <label htmlFor="first-input" className="inline-block relative w-full mb-2 text-lg font-medium text-black">First Name</label>
+            <label htmlFor="first-input" className="inline-block relative w-full mb-2 text-lg font-medium text-black">Captain's First Name</label>
             <input
               type="text"
               className="inline-block w-full p-2 border border-gray-300 rounded-lg bg-gray-200 text-sm focus:ring-blue-500"
@@ -50,7 +50,7 @@ const CaptainSignUp = () => {
             />
           </div>
           <div className="lastname-input relative w-full" id="lastName">
-            <label htmlFor="last-input" className="inline-block relative w-full mb-2 text-lg font-medium text-black">Last Name</label>
+            <label htmlFor="last-input" className="inline-block relative w-full mb-2 text-lg font-medium text-black">Captain's Last Name</label>
             <input
               type="text"
               className="inline-block w-full p-2 border border-gray-300 rounded-lg bg-gray-200 text-sm focus:ring-blue-500"
@@ -63,7 +63,7 @@ const CaptainSignUp = () => {
           </div>
         </div>
         <div className="mb-2">
-          <label htmlFor="email-input" className="block mb-2 text-lg font-medium text-black">Email</label>
+          <label htmlFor="email-input" className="block mb-2 text-lg font-medium text-black">Captain's Email</label>
           <input
             type="email"
             className="block w-full p-2 border border-gray-300 rounded-lg bg-gray-200 text-sm focus:ring-blue-500"
@@ -75,7 +75,7 @@ const CaptainSignUp = () => {
           />
         </div>
         <div className="mb-5">
-          <label htmlFor="base-input" className="block mb-2 text-lg font-medium text-black">Password</label>
+          <label htmlFor="base-input" className="block mb-2 text-lg font-medium text-black">Captain's Password</label>
           <input
             type="password"
             className="bg-gray-200 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 block w-full p-2"
