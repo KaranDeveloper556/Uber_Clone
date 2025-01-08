@@ -7,6 +7,7 @@ import UserLogin from './pages/auth/user/UserLogin';
 import CaptainSignUp from './pages/auth/captain/CaptainSignUp';
 import CaptainLogin from './pages/auth/captain/CaptainLogin';
 import Home from './pages/site/Home';
+import UserProtectWapper from './components/HOCs/UserProtectWapper';
 
 const App = () => {
   return (
@@ -19,7 +20,7 @@ const App = () => {
       <Route path="/captain-register" element={<CaptainSignUp />} />
       <Route path="/captain-login" element={<CaptainLogin />} />
 
-      <Route path="/home" element={<Home />} />
+      <Route path="/home" element={<UserProtectWapper><Home /></UserProtectWapper>} />
     </Routes>
   )
 }

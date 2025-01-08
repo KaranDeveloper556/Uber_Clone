@@ -14,7 +14,7 @@ const UserSignUp = () => {
 
   const { Data, setData } = useContext(UserDataContext)
 
-  const SubmitHandle =async (e) => {
+  const SubmitHandle = async (e) => {
     e.preventDefault()
 
     const UpdatedUserData = {
@@ -30,6 +30,7 @@ const UserSignUp = () => {
     if (response.status === 201) {
       const data = response.data
       setData(data.user)
+      localStorage.setItem("token", data.token)
       navigate('/home')
     }
 
