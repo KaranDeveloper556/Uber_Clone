@@ -19,7 +19,7 @@ const UserLogin = () => {
       password: Password
     }
 
-    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/user/login`, UpdatedUserData, { withCredentials: true })
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/user/login`, UpdatedUserData)
     if (response.status === 200 || response.status === 201) {
       const data = response.data
       setData(data.user)
